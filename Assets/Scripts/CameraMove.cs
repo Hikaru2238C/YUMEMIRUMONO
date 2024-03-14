@@ -19,19 +19,19 @@ public class CameraMove : MonoBehaviour
         this.transform.position = t_position + new Vector3(0, 30, -30) + position_move;
         if(Input.GetKey(KeyCode.E))
         {
-            if(this.transform.position.y < 40)
+            if(this.transform.position.y < target.transform.position.y + 30)
             {
-                this.transform.Rotate(10 * Time.deltaTime, 0, 0);
-                position_move += new Vector3(0, 11f, -12f) * Time.deltaTime;
+                this.transform.Rotate(30 * Time.deltaTime, 0, 0);
+                position_move += new Vector3(0, 17f, -15f) * Time.deltaTime;
             }
             
         }
         else if(Input.GetKey(KeyCode.Q))
         {
-            if(this.transform.position.y > 10)
+            if(this.transform.position.y > target.transform.position.y + 5)
             {
-                this.transform.Rotate(-10 * Time.deltaTime, 0, 0);
-                position_move += new Vector3(0, -11f, 12f) * Time.deltaTime;
+                this.transform.Rotate(-30 * Time.deltaTime, 0, 0);
+                position_move += new Vector3(0, -17f, 15f) * Time.deltaTime;
             }   
         }
     }
