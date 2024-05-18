@@ -44,7 +44,17 @@ public class BasicBehaviour : MonoBehaviour
 	// Get current default behaviour.
 	public int GetDefaultBehaviour => defaultBehaviour;
 
-	void Awake ()
+    public enum State
+    {
+        Normal,
+        Talk
+    }
+
+    //　状態
+    private State state;
+    //　会話処理スクリプト
+    private MessageScript messageScript;
+    void Awake ()
 	{
 		// Set up the references.
 		behaviours = new List<GenericBehaviour> ();
@@ -59,33 +69,52 @@ public class BasicBehaviour : MonoBehaviour
 		groundedBool = Animator.StringToHash("Grounded");
 		colExtents = GetComponent<Collider>().bounds.extents;
 	}
-
+	
+	void Start ()
+	{
+		state = State.Normal;
+        messageScript = GetComponent<MessageScript>();
+	}
 	void Update()
 	{
-		// Store the input axes.
-		h = Input.GetAxis("Horizontal");
-		v = Input.GetAxis("Vertical");
-
-		// Set the input axes on the Animator Controller.
-		anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
-		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
-
-		// Toggle sprint by input.
-		sprint = Input.GetButton (sprintButton);
-
-		// Set the correct camera FOV for sprint mode.
-		if(IsSprinting())
+		if(state == State.Normal)
 		{
-			changedFOV = true;
-			camScript.SetFOV(sprintFOV);
-		}
-		else if(changedFOV)
+			// Store the input axes.
+			h = Input.GetAxis("Horizontal");
+			v = Input.GetAxis("Vertical");
+
+			// Set the input axes on the Animator Controller.
+			anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
+			anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
+
+			// Toggle sprint by input.
+			sprint = Input.GetButton (sprintButton);
+
+			// Set the correct camera FOV for sprint mode.
+			if(IsSprinting())
+			{
+				changedFOV = true;
+				camScript.SetFOV(sprintFOV);
+			}
+			else if(changedFOV)
+			{
+				camScript.ResetFOV();
+				changedFOV = false;
+			}
+            if (messageScript.GetConversationPartner() != null
+                && Input.GetButtonDown("Jump")
+                )
+            {
+                SetState(State.Talk);
+            }
+        }
+		if(state == State.Talk)
 		{
-			camScript.ResetFOV();
-			changedFOV = false;
+
 		}
-		// Set the grounded test on the Animator Controller.
-		anim.SetBool(groundedBool, IsGrounded());
+
+        // Set the grounded test on the Animator Controller.
+        anim.SetBool(groundedBool, IsGrounded());
 	}
 
 	// Call the FixedUpdate functions of the active or overriding behaviours.
@@ -324,6 +353,22 @@ public class BasicBehaviour : MonoBehaviour
 		Ray ray = new Ray(this.transform.position + Vector3.up * (2 * colExtents.x), Vector3.down);
 		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f);
 	}
+
+    //　状態変更と初期設定
+    public void SetState(State state)
+    {
+        this.state = state;
+
+        if (state == State.Talk)
+        {
+            messageScript.StartTalking();
+        }
+    }
+    public State GetState()
+    {
+        return state;
+    }
+
 }
 
 // This is the base class for all player behaviours, any custom behaviour must inherit from this.

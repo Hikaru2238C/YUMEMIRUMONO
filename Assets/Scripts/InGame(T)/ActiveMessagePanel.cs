@@ -20,7 +20,7 @@ public class ActiveMessagePanel : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            messageScript.SetMessagePanel(message);
+            //messageScript.SetMessagePanel(message);
         }
     }
 }

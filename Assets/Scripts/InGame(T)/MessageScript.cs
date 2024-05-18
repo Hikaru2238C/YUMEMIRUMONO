@@ -6,14 +6,20 @@ using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
-    private Text messageText;
+    //　会話可能な相手
+    private GameObject conversationPartner;
+    //　会話可能アイコン
     [SerializeField]
-    [TextArea(1, 20)]
-    private string allMessage = "今回はRPGでよく使われるメッセージ表示機能を作りたいと思います。\n" 
-        + "メッセージが表示されるスピードの調節も可能であり、改行にも対応します。\n" 
-        + "改善の余地がかなりありますが、\n" 
-        + "最低限の機能は備えていると思われます。\n"
-        + "ぜひ活用してみてください。\n<>";
+    private GameObject talkIcon = null;
+
+
+    // TalkUIゲームオブジェクト
+    [SerializeField]
+    private GameObject talkUI = null;
+    //　メッセージUI
+    private Text messageText = null;
+    //　表示するメッセージ
+    private string allMessage = null;
     //　使用する分割文字列
     [SerializeField]
     private string splitString = "<>";
@@ -29,7 +35,8 @@ public class MessageScript : MonoBehaviour
     //　今見ている文字番号
     private int nowTextNum = 0;
     //　マウスクリックを促すアイコン
-    private Image clickIcon;
+    [SerializeField]
+    private Image clickIcon = null;
     //　クリックアイコンの点滅秒数
     [SerializeField]
     private float clickFlashTime = 0.2f;
@@ -40,11 +47,8 @@ public class MessageScript : MonoBehaviour
 
     void Start()
     {
-        clickIcon = transform.Find("Panel/Image").GetComponent<Image>();
         clickIcon.enabled = false;
-        messageText = GetComponentInChildren<Text>();
-        messageText.text = "";
-        SetMessage(allMessage);
+        messageText = talkUI.GetComponentInChildren<Text>();
     }
 
     void Update()
@@ -75,7 +79,7 @@ public class MessageScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             //　メッセージ表示中にマウスの左ボタンを押したら一括表示
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Jump"))
             {
                 //　ここまでに表示しているテキストに残りのメッセージを足す
                 messageText.text += splitMessage[messageNum].Substring(nowTextNum);
@@ -96,7 +100,7 @@ public class MessageScript : MonoBehaviour
             }
 
             //　マウスクリックされたら次の文字表示処理
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Jump"))
             {
                 nowTextNum = 0;
                 messageNum++;
@@ -108,28 +112,77 @@ public class MessageScript : MonoBehaviour
                 //　メッセージが全部表示されていたらゲームオブジェクト自体の削除
                 if (messageNum >= splitMessage.Length)
                 {
-                    isEndMessage = true;
-                    transform.GetChild(0).gameObject.SetActive(false);
+                    EndTalking();
                 }
             }
         }
     }
-    //　新しいメッセージを設定
-    void SetMessage(string message)
+
+    private void LateUpdate()
     {
-        this.allMessage = message;
+        //　会話相手がいる場合はTalkIconの位置を会話相手の頭上に表示
+        if (conversationPartner != null)
+        {
+            talkIcon.transform.Find("Panel").position = Camera.main.GetComponent<Camera>().WorldToScreenPoint(conversationPartner.transform.position + Vector3.up * 2f);
+        }
+    }
+
+    //　会話相手を設定
+    public void SetConversationPartner(GameObject partnerObj)
+    {
+        talkIcon.SetActive(true);
+        conversationPartner = partnerObj;
+    }
+
+    //　会話相手をリセット
+    public void ResetConversationPartner(GameObject parterObj)
+    {
+        //　会話相手がいない場合は何もしない
+        if (conversationPartner == null)
+        {
+            return;
+        }
+        //　会話相手と引数で受け取った相手が同じインスタンスIDを持つなら会話相手をなくす
+        if (conversationPartner.GetInstanceID() == parterObj.GetInstanceID())
+        {
+            talkIcon.SetActive(false);
+            conversationPartner = null;
+        }
+    }
+    //　会話相手を返す
+    public GameObject GetConversationPartner()
+    {
+        return conversationPartner;
+    }
+
+    //　会話を開始する
+    public void StartTalking()
+    {
+        var villagerScript = conversationPartner.GetComponent<VillagerScript>();
+        villagerScript.SetState(VillagerScript.State.Talk, transform);
+        this.allMessage = villagerScript.GetConversation().GetConversationMessage();
         //　分割文字列で一回に表示するメッセージを分割する
         splitMessage = Regex.Split(allMessage, @"\s*" + splitString + @"\s*", RegexOptions.IgnorePatternWhitespace);
+        //　初期化処理
         nowTextNum = 0;
         messageNum = 0;
         messageText.text = "";
+        talkUI.SetActive(true);
+        talkIcon.SetActive(false);
         isOneMessage = false;
         isEndMessage = false;
+        //　会話開始時の入力は一旦リセット
+        Input.ResetInputAxes();
     }
-    //　他のスクリプトから新しいメッセージを設定しUIをアクティブにする
-    public void SetMessagePanel(string message)
+    //　会話を終了する
+    void EndTalking()
     {
-        SetMessage(message);
-        transform.GetChild(0).gameObject.SetActive(true);
+        isEndMessage = true;
+        talkUI.SetActive(false);
+        //　ユニティちゃんと村人両方の状態を変更する
+        var villagerScript = conversationPartner.GetComponent<VillagerScript>();
+        villagerScript.SetState(VillagerScript.State.Wait);
+        GetComponent<BasicBehaviour>().SetState(BasicBehaviour.State.Normal);
+        Input.ResetInputAxes();
     }
 }
