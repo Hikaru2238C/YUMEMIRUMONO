@@ -10,7 +10,7 @@ public class ConversationScopeScript : MonoBehaviour
             && col.GetComponent<BasicBehaviour>().GetState() != BasicBehaviour.State.Talk
             )
         {
-            //　ユニティちゃんが近づいたら会話相手として自分のゲームオブジェクトを渡す
+            //　キャラクターが近づいたら会話相手として自分のゲームオブジェクトを渡す
             col.GetComponent<MessageScript>().SetConversationPartner(transform.parent.gameObject);
         }
     }
@@ -21,7 +21,7 @@ public class ConversationScopeScript : MonoBehaviour
             && col.GetComponent<BasicBehaviour>().GetState() != BasicBehaviour.State.Talk
             )
         {
-            //　ユニティちゃんが遠ざかったら会話相手から外す
+            //　キャラクターが遠ざかったら会話相手から外す
             col.GetComponent<MessageScript>().ResetConversationPartner(transform.parent.gameObject);
         }
     }
