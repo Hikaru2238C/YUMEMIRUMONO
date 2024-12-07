@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image backGroundPanel;
     [SerializeField] Image charaImage;
     [SerializeField] ShakeScreen shakeScreen;
+    [SerializeField] BGMDataBase bgmDataBase;
+    [SerializeField] BackgroundDataBase backgroundDataBase;
+    [SerializeField] PortraitDataBase portraitDataBase;
+    [SerializeField] SEDataBase seDataBase;
 
     float delaySpeed; // 次の文字を表示するまでの時間[s]
     private Coroutine showCoroutine;
@@ -120,14 +125,32 @@ public class UIManager : MonoBehaviour
     //BGMを変える
     public void UpdateBGM(string songName)
     {
-        BGMClip = (AudioClip)Resources.Load("BGM/" + songName);
+        //BGMClip = (AudioClip)Resources.Load("BGM/" + songName);
+        Dictionary<string, AudioClip> dict = bgmDataBase.BGMData.ToDictionary();
+
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key == songName)
+            {
+                BGMClip = kvp.Value;
+            }
+        }
         BGM.PlayOneShot(BGMClip);
     }
 
     //SEを鳴らす
     public void UpdateSE(string seName)
     {
-        SEClip = (AudioClip)Resources.Load("SE/" + seName);
+        //SEClip = (AudioClip)Resources.Load("SE/" + seName);
+        Dictionary<string, AudioClip> dict = seDataBase.SEData.ToDictionary();
+
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key == seName)
+            {
+                SEClip = kvp.Value;
+            }
+        }
         SE.PlayOneShot(SEClip);
     }
 
@@ -140,8 +163,17 @@ public class UIManager : MonoBehaviour
     //キャラクターを変える
     public void UpdatePortrait(string charaImageName)
     {
-        charaImage.sprite = (Sprite)Resources.Load("charaImage/" + charaImageName, typeof(Sprite));
-        if(charaImage.sprite == null)
+        //charaImage.sprite = (Sprite)Resources.Load("charaImage/" + charaImageName, typeof(Sprite));
+        Dictionary<string, Sprite> dict = portraitDataBase.PortraitData.ToDictionary();
+
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key == charaImageName)
+            {
+                charaImage.sprite = kvp.Value;
+            }
+        }
+        if (charaImage.sprite == null)
         {
             charaImage.GetComponentInChildren<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
@@ -154,6 +186,15 @@ public class UIManager : MonoBehaviour
     //背景を変える
     public void UpdateBackground(string backImageName)
     {
-        backGroundPanel.sprite = (Sprite)Resources.Load("BackGroundImage/" + backImageName, typeof(Sprite));
+        //backGroundPanel.sprite = (Sprite)Resources.Load("BackGroundImage/" + backImageName, typeof(Sprite));
+        Dictionary<string, Sprite> dict = backgroundDataBase.BackgroundData.ToDictionary();
+
+        foreach (var kvp in dict)
+        {
+            if (kvp.Key == backImageName)
+            {
+                backGroundPanel.sprite = kvp.Value;
+            }
+        }
     }
 }
