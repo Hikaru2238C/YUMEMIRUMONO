@@ -1,0 +1,66 @@
+﻿{
+   "QuestName": "『目覚め』",
+   "Scenario": [
+      {
+         "Background": "main_image",
+         "BlackOut": 0.001
+       },
+      {
+         "CharacterName": "ユイガ",
+         "Dialogue": {
+            "text": "「・・・?」",
+            "speed": 0.05
+         }
+      },
+      {
+         "Dialogue": {
+            "text": "自室のベッドに寝ていたはずなのに、それにしては感触が硬すぎる",
+            "speed": 0.05
+         }
+      },
+      {
+         "Dialogue": {
+            "text": "石の上に寝ている感じだ",
+            "speed": 0.05
+         }
+      },
+      {
+         "CharacterName": "ユイガ",
+         "Dialogue": {
+            "text": "「ここは・・・?」",
+            "speed": 0.05
+         }
+      },
+      {
+         "CharacterName": "ユイガ",
+         "Dialogue": {
+            "text": "「暗い・・・」",
+            "speed": 0.05
+         }
+      },
+      {
+         "CharacterName": "ユイガ",
+         "Dialogue": {
+            "text": "「なんだ・・・?」",
+            "speed": 0.05
+         },
+         "Portrait": "yuiga_normal"
+      },
+      {
+         "CharacterName": "ユイガ",
+         "Dialogue": {
+            "text": "「なんだこれ・・・!?」",
+            "speed": 0.2
+         },
+         "Portrait": "yuiga_normal",
+         "SE": "爆発1",
+         "BlackIn": 2
+      },
+      {
+         "Dialogue": {
+            "text": "体が着ぐるみのような姿に変わっていた",
+            "time": 0.05
+         }
+      }
+   ]
+}

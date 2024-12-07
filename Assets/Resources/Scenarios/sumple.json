@@ -1,15 +1,15 @@
-{
-  "id": "sumple",
+﻿{
+  "QuestName": "sample",
   "Scenario": [
     {
       "Background": "main_image",
-      "BlackOut": 0.01
+      "BlackOut": 0.001
     },
     {
       "CharacterName": "ユイガ",
       "Dialogue": {
         "text": "「・・・？」",
-        "speed": 0.1
+        "speed": 0.05
       },
       "BlackIn": 3,
       "BGM": "クレイジークッキング"
@@ -17,27 +17,27 @@
     {
       "Dialogue": {
         "text": "自室のベッドに寝ていたはずなのに、それにしては感触が硬すぎる",
-        "speed": 0.1
+        "speed": 0.05
       }
     },
     {
       "Dialogue": {
         "text": "石の上に寝ている感じだ",
-        "speed": 0.1
+        "speed": 0.05
       }
     },
     {
       "CharacterName": "ユイガ",
       "Dialogue": {
         "text": "「ここは・・・？」",
-        "speed": 0.1
+        "speed": 0.05
       }
     },
     {
       "CharacterName": "ユイガ",
       "Dialogue": {
         "text": "「暗い・・・」",
-        "speed": 0.1
+        "speed": 0.05
       }
     },
     {
@@ -52,7 +52,7 @@
       "CharacterName": "ユイガ",
       "Dialogue": {
         "text": "「なんだこれ・・・!？」",
-        "speed": 0.025
+        "speed": 0.2
       },
       "Portrait": "yuiga_normal",
       "SE": "爆発1"
@@ -60,21 +60,21 @@
     {
       "Dialogue": {
         "text": "体が着ぐるみのような姿に変わっていた",
-        "speed": 0.1
+        "speed": 0.05
       }
     },
     {
       "Background": "samui2",
       "Dialogue": {
         "text": "Background切り替え",
-        "speed": 0
+        "speed": 0.01
       }
     },
     {
       "ScreenShake": 30,
       "Dialogue": {
         "text": "ド　ン　ッ　！　！",
-        "speed": 0
+        "speed": 0.01
       }
     }
   ]
