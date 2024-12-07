@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class GetQuestID : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"‚¿‰z‚³‚ê‚½ID: {idData.questID}");
+        Debug.Log($"æŒã¡è¶Šã•ã‚ŒãŸID: {idData.questID}");
     }
 }
 

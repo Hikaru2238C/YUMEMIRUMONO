@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +39,7 @@ public class ScenarioDataBase : ScriptableObject
         //    }
         //}
     }
-    [Header("ã‚É‚Í’¼ÚID‚ğA‰º‚É‚ÍJsonƒtƒ@ƒCƒ‹‚ğResorcesƒtƒ@ƒCƒ‹‚©‚ç“ü‚ê‚é")]
+    [Header("ä¸Šã«ã¯ç›´æ¥IDã‚’ã€ä¸‹ã«ã¯Jsonãƒ•ã‚¡ã‚¤ãƒ«ã‚’Resorcesãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å…¥ã‚Œã‚‹")]
     [SerializeField]
     public SerializableDictionary<string, TextAsset> ScenarioData = new SerializableDictionary<string, TextAsset>();
 

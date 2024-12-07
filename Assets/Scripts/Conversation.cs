@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +7,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Conversation", menuName = "CreateConversation")]
 public class Conversation : ScriptableObject
 {
-    //@‰ï˜b“à—e
+    //ã€€ä¼šè©±å†…å®¹
     [SerializeField]
     [Multiline(100)]
     private string message = null;
 
-    //@‰ï˜b“à—e‚ğ•Ô‚·
+    //ã€€ä¼šè©±å†…å®¹ã‚’è¿”ã™
     public string GetConversationMessage()
     {
         return message;

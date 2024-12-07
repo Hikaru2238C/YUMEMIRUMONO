@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +23,7 @@ public class HintDataBase : ScriptableObject
         }
     }
 
-    [Header("ã‚É‚Í’¼ÚID‚ğA‰º‚É‚Íƒqƒ“ƒg‚ÌƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ğ“ü‚ê‚é")]
+    [Header("ä¸Šã«ã¯ç›´æ¥IDã‚’ã€ä¸‹ã«ã¯ãƒ’ãƒ³ãƒˆã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’å…¥ã‚Œã‚‹")]
     [SerializeField]
     public SerializableDictionary<string, TextAsset> HintData = new SerializableDictionary<string, TextAsset>();
 }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +23,7 @@ public class PortraitDataBase : ScriptableObject
         }
     }
 
-    [Header("ã‚É‚Í’¼ÚID‚ğA‰º‚É‚ÍPortrait‚ğResorcesƒtƒ@ƒCƒ‹‚©‚ç“ü‚ê‚é")]
+    [Header("ä¸Šã«ã¯ç›´æ¥IDã‚’ã€ä¸‹ã«ã¯Portraitã‚’Resorcesãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å…¥ã‚Œã‚‹")]
     [SerializeField]
     public SerializableDictionary<string, Sprite> PortraitData = new SerializableDictionary<string, Sprite>();
 }

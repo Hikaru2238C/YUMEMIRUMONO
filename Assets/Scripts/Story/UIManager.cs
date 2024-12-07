@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text mainText; // UI‚ÌMainText‚ğƒAƒ^ƒbƒ`
-    [SerializeField] TMP_Text nameText; // UI‚ÌNameText‚ğƒAƒ^ƒbƒ`
-    [SerializeField] FadePanelControl blackPanelControl; //BlackPanel‚ğƒAƒ^ƒbƒ`
-    [SerializeField] FadePanelControl whitePanelControl; //WhitePanel‚ğƒAƒ^ƒbƒ`
+    [SerializeField] TMP_Text mainText; // UIã®MainTextã‚’ã‚¢ã‚¿ãƒƒãƒ
+    [SerializeField] TMP_Text nameText; // UIã®NameTextã‚’ã‚¢ã‚¿ãƒƒãƒ
+    [SerializeField] FadePanelControl blackPanelControl; //BlackPanelã‚’ã‚¢ã‚¿ãƒƒãƒ
+    [SerializeField] FadePanelControl whitePanelControl; //WhitePanelã‚’ã‚¢ã‚¿ãƒƒãƒ
     [SerializeField] AudioSource BGM;
     AudioClip BGMClip;
     [SerializeField] AudioSource SE;
@@ -23,10 +23,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] PortraitDataBase portraitDataBase;
     [SerializeField] SEDataBase seDataBase;
 
-    float delaySpeed; // Ÿ‚Ì•¶š‚ğ•\¦‚·‚é‚Ü‚Å‚ÌŠÔ[s]
+    float delaySpeed; // æ¬¡ã®æ–‡å­—ã‚’è¡¨ç¤ºã™ã‚‹ã¾ã§ã®æ™‚é–“[s]
     private Coroutine showCoroutine;
 
-    //–¼‘OƒeƒLƒXƒg‚Ì•ÏX
+    //åå‰ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ›´
     public void UpdateNameText(string text)
     {
         if (!string.IsNullOrEmpty(text))
@@ -35,11 +35,11 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            nameText.text = ""; // ‹ó‚Ìê‡‚ÍƒeƒLƒXƒg‚ğƒNƒŠƒA
+            nameText.text = ""; // ç©ºã®å ´åˆã¯ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢
         }
     }
 
-    //‰ï˜bƒeƒLƒXƒg‚Ì•ÏX
+    //ä¼šè©±ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ›´
     public void UpdateMainText(string text,float speed)
     {
         if (!string.IsNullOrEmpty(text))
@@ -50,79 +50,79 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            mainText.text = ""; // ‹ó‚Ìê‡‚ÍƒeƒLƒXƒg‚ğƒNƒŠƒA
+            mainText.text = ""; // ç©ºã®å ´åˆã¯ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢
         }
     }
 
-    //‰ï˜bƒeƒLƒXƒg‚ÌƒNƒŠƒA
+    //ä¼šè©±ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¯ãƒªã‚¢
     public void ClearDialogue()
     {
-        mainText.text = ""; // –¾¦“I‚ÉƒeƒLƒXƒg‚ğÁ‚·
+        mainText.text = ""; // æ˜ç¤ºçš„ã«ãƒ†ã‚­ã‚¹ãƒˆã‚’æ¶ˆã™
     }
-    // •¶š‘—‚è‰‰o‚ğ•\¦‚·‚é
+    // æ–‡å­—é€ã‚Šæ¼”å‡ºã‚’è¡¨ç¤ºã™ã‚‹
     public void Show()
     {
         if (mainText.text == null) { return; }
-        // ‘O‰ñ‚Ì‰‰oˆ—‚ª‘–‚Á‚Ä‚¢‚½‚çA’â~
+        // å‰å›ã®æ¼”å‡ºå‡¦ç†ãŒèµ°ã£ã¦ã„ãŸã‚‰ã€åœæ­¢
         if (showCoroutine != null)
         {
             StopCoroutine(showCoroutine);
         }
-        // ‚P•¶š‚¸‚Â•\¦‚·‚é‰‰o‚ÌƒRƒ‹[ƒ`ƒ“‚ğÀs‚·‚é
+        // ï¼‘æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹æ¼”å‡ºã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å®Ÿè¡Œã™ã‚‹
         showCoroutine = StartCoroutine(ShowCoroutine());
     }
 
-    // ‚P•¶š‚¸‚Â•\¦‚·‚é‰‰o‚ÌƒRƒ‹[ƒ`ƒ“
+    // ï¼‘æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹æ¼”å‡ºã®ã‚³ãƒ«ãƒ¼ãƒãƒ³
     private IEnumerator ShowCoroutine()
     {
-        // ‘Ò‹@—pƒRƒ‹[ƒ`ƒ“
-        // GC Alloc‚ğÅ¬‰»‚·‚é‚½‚ßƒLƒƒƒbƒVƒ…‚µ‚Ä‚¨‚­
+        // å¾…æ©Ÿç”¨ã‚³ãƒ«ãƒ¼ãƒãƒ³
+        // GC Allocã‚’æœ€å°åŒ–ã™ã‚‹ãŸã‚ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ãŠã
         var delay = new WaitForSeconds(delaySpeed);
 
-        // ƒeƒLƒXƒg‘S‘Ì‚Ì’·‚³
+        // ãƒ†ã‚­ã‚¹ãƒˆå…¨ä½“ã®é•·ã•
         var length = mainText.text.Length;
 
-        // ‚P•¶š‚¸‚Â•\¦‚·‚é‰‰o
+        // ï¼‘æ–‡å­—ãšã¤è¡¨ç¤ºã™ã‚‹æ¼”å‡º
         for (var i = 0; i < length; i++)
         {
-            // ™X‚É•\¦•¶š”‚ğ‘‚â‚µ‚Ä‚¢‚­
+            // å¾ã€…ã«è¡¨ç¤ºæ–‡å­—æ•°ã‚’å¢—ã‚„ã—ã¦ã„ã
             mainText.maxVisibleCharacters = i;
 
-            // ˆê’èŠÔ‘Ò‹@
+            // ä¸€å®šæ™‚é–“å¾…æ©Ÿ
             yield return delay;
         }
 
-        // ‰‰o‚ªI‚í‚Á‚½‚ç‘S‚Ä‚Ì•¶š‚ğ•\¦‚·‚é
+        // æ¼”å‡ºãŒçµ‚ã‚ã£ãŸã‚‰å…¨ã¦ã®æ–‡å­—ã‚’è¡¨ç¤ºã™ã‚‹
         mainText.maxVisibleCharacters = length;
 
         showCoroutine = null;
     }
 
-    //‰æ–Ê‚ğ‘f¨•
+    //ç”»é¢ã‚’ç´ â†’é»’
     public void UpdateBlackOut(float speed)
     {
         blackPanelControl.FadeOut(speed);
     }
 
-    //‰æ–Ê‚ğ•¨‘f
+    //ç”»é¢ã‚’é»’â†’ç´ 
     public void UpdateBlackIn(float speed)
     {
         blackPanelControl.FadeIn(speed);
     }
 
-    //‰æ–Ê‚ğ‘f¨”’
+    //ç”»é¢ã‚’ç´ â†’ç™½
     public void UpdateWhiteOut(float speed)
     {
         whitePanelControl.FadeOut(speed);
     }
 
-    //‰æ–Ê‚ğ”’¨‘f
+    //ç”»é¢ã‚’ç™½â†’ç´ 
     public void UpdateWhiteIn(float speed)
     {
         whitePanelControl.FadeIn(speed);
     }
 
-    //BGM‚ğ•Ï‚¦‚é
+    //BGMã‚’å¤‰ãˆã‚‹
     public void UpdateBGM(string songName)
     {
         //BGMClip = (AudioClip)Resources.Load("BGM/" + songName);
@@ -138,7 +138,7 @@ public class UIManager : MonoBehaviour
         BGM.PlayOneShot(BGMClip);
     }
 
-    //SE‚ğ–Â‚ç‚·
+    //SEã‚’é³´ã‚‰ã™
     public void UpdateSE(string seName)
     {
         //SEClip = (AudioClip)Resources.Load("SE/" + seName);
@@ -154,13 +154,13 @@ public class UIManager : MonoBehaviour
         SE.PlayOneShot(SEClip);
     }
 
-    //‰æ–Ê‚ğ—h‚ç‚·
+    //ç”»é¢ã‚’æºã‚‰ã™
     public void UpdateScreenShake(float power)
     {
         shakeScreen.StartShake(power);
     }
 
-    //ƒLƒƒƒ‰ƒNƒ^[‚ğ•Ï‚¦‚é
+    //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’å¤‰ãˆã‚‹
     public void UpdatePortrait(string charaImageName)
     {
         //charaImage.sprite = (Sprite)Resources.Load("charaImage/" + charaImageName, typeof(Sprite));
@@ -183,7 +183,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //”wŒi‚ğ•Ï‚¦‚é
+    //èƒŒæ™¯ã‚’å¤‰ãˆã‚‹
     public void UpdateBackground(string backImageName)
     {
         //backGroundPanel.sprite = (Sprite)Resources.Load("BackGroundImage/" + backImageName, typeof(Sprite));

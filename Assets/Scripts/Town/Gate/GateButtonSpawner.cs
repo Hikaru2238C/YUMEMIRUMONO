@@ -1,18 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class GateButtonSpawner : MonoBehaviour
 {
-    // Prefab‚ğw’è
+    // Prefabã‚’æŒ‡å®š
     [SerializeField] GameObject ButtleButtonPrefab;
     [SerializeField] GameObject ScenarioeButtonPrefab;
 
-    // eƒIƒuƒWƒFƒNƒg‚ğw’è
+    // è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®š
     [SerializeField] Transform parentObject;
 
-    //ƒNƒGƒXƒgƒf[ƒ^‚ğw’è
+    //ã‚¯ã‚¨ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®š
     [SerializeField] QuestDataBase questDataBase;
 
     private void Start()
@@ -28,25 +28,25 @@ public class GateButtonSpawner : MonoBehaviour
             Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value}");
             if ( kvp.Value)
             {
-                // id‚ğİ’è
+                // idã‚’è¨­å®š
                 string id = $"{kvp.Key}";
 
-                // ¶¬‚·‚éPrefab‚ğID‚ÉŠî‚Ã‚¢‚Ä‘I‘ğ
+                // ç”Ÿæˆã™ã‚‹Prefabã‚’IDã«åŸºã¥ã„ã¦é¸æŠ
                 GameObject prefabToSpawn = null;
-                if (id.StartsWith("ƒoƒgƒ‹"))
+                if (id.StartsWith("ãƒãƒˆãƒ«"))
                 {
                     prefabToSpawn = ButtleButtonPrefab;
                 }
-                else if (id.StartsWith("ƒVƒiƒŠƒI")|| id.StartsWith("sumple"))
+                else if (id.StartsWith("ã‚·ãƒŠãƒªã‚ª")|| id.StartsWith("sumple"))
                 {
                     prefabToSpawn = ScenarioeButtonPrefab;
                 }                
-                // Prefab‚ğ¶¬‚µAeƒIƒuƒWƒFƒNƒg‚ğw’è
+                // Prefabã‚’ç”Ÿæˆã—ã€è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®š
                 GameObject childButton = Instantiate(prefabToSpawn, parentObject);
-                //–¼‘O‚ğİ’è
+                //åå‰ã‚’è¨­å®š
                 childButton.name = id;
 
-                // ID‚ğŠi”[‚·‚éƒXƒNƒŠƒvƒg‚ª‚ ‚éê‡‚Éİ’è
+                // IDã‚’æ ¼ç´ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒã‚ã‚‹å ´åˆã«è¨­å®š
                 GateButtonID childID = childButton.GetComponent<GateButtonID>();
                 if (childID != null)
                 {

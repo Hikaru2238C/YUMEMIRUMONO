@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +27,7 @@ public class BGMDataBase : ScriptableObject
             return dict;
         }
     }
-    [Header("ã‚É‚Í’¼ÚID‚ğA‰º‚É‚ÍBGM‚ğResorcesƒtƒ@ƒCƒ‹‚©‚ç“ü‚ê‚é")]
+    [Header("ä¸Šã«ã¯ç›´æ¥IDã‚’ã€ä¸‹ã«ã¯BGMã‚’Resorcesãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å…¥ã‚Œã‚‹")]
     [SerializeField]
     public SerializableDictionary<string, AudioClip> BGMData = new SerializableDictionary<string, AudioClip>();
 

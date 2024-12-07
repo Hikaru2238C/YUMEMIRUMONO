@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +11,7 @@ public class QuestSelectManager : MonoBehaviour
     {
         Debug.Log(gateButtonID.ID);
         gateIDData.questID = gateButtonID.ID;
-        if (gateButtonID.ID.StartsWith("ƒoƒgƒ‹"))
+        if (gateButtonID.ID.StartsWith("ãƒãƒˆãƒ«"))
         {
             SceneManager.LoadScene("Battle");
         }

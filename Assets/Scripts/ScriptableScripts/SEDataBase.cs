@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +23,7 @@ public class SEDataBase : ScriptableObject
         }
     }
 
-    [Header("ã‚É‚Í’¼ÚID‚ğA‰º‚É‚ÍSE‚ğResorcesƒtƒ@ƒCƒ‹‚©‚ç“ü‚ê‚é")]
+    [Header("ä¸Šã«ã¯ç›´æ¥IDã‚’ã€ä¸‹ã«ã¯SEã‚’Resorcesãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å…¥ã‚Œã‚‹")]
     [SerializeField]
     public SerializableDictionary<string, AudioClip> SEData = new SerializableDictionary<string, AudioClip>();
 }

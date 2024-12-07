@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadePanelControl : MonoBehaviour
 {
-    float alpha = 0.0f;//“§‰ß—¦A‚±‚ê‚ğ•Ï‰»‚³‚¹‚é
-    float fadeSpeed;//ƒtƒF[ƒh‚ÉŠ|‚©‚éŠÔ
+    float alpha = 0.0f;//é€éç‡ã€ã“ã‚Œã‚’å¤‰åŒ–ã•ã›ã‚‹
+    float fadeSpeed;//ãƒ•ã‚§ãƒ¼ãƒ‰ã«æ›ã‹ã‚‹æ™‚é–“
     bool isFadeIn = false;
     bool isFadeOut = false;
     private void Update()
@@ -14,7 +14,7 @@ public class FadePanelControl : MonoBehaviour
         if (isFadeIn)
         {
             alpha -= Time.deltaTime / fadeSpeed;
-            if (alpha <= 0.0f)//“§–¾‚É‚È‚Á‚½‚çAƒtƒF[ƒhƒCƒ“‚ğI—¹
+            if (alpha <= 0.0f)//é€æ˜ã«ãªã£ãŸã‚‰ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã‚’çµ‚äº†
             {
                 isFadeIn = false;
                 alpha = 0.0f;
@@ -24,7 +24,7 @@ public class FadePanelControl : MonoBehaviour
         else if (isFadeOut)
         {
             alpha += Time.deltaTime / fadeSpeed;
-            if (alpha >= 1.0f)//^‚Á•‚É‚È‚Á‚½‚çAƒtƒF[ƒhƒAƒEƒg‚ğI—¹
+            if (alpha >= 1.0f)//çœŸã£é»’ã«ãªã£ãŸã‚‰ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚’çµ‚äº†
             {
                 isFadeOut = false;
                 alpha = 1.0f;
@@ -33,13 +33,13 @@ public class FadePanelControl : MonoBehaviour
         }
     }
 
-    //•(”’)‚©‚ç‘f
+    //é»’(ç™½)ã‹ã‚‰ç´ 
     public void FadeIn(float speed)
     {
         isFadeIn = true;
         fadeSpeed = speed;
     }
-    //‘f‚©‚ç•(”’)
+    //ç´ ã‹ã‚‰é»’(ç™½)
     public void FadeOut(float speed)
     {
         isFadeOut = true;

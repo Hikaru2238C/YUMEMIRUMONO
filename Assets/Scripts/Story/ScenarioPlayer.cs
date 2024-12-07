@@ -1,13 +1,13 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI; // •K—v‚È‚çUI‚ğg—p
+using UnityEngine.UI; // å¿…è¦ãªã‚‰UIã‚’ä½¿ç”¨
 
 public class ScenarioPlayer: MonoBehaviour
 {
     [SerializeField] GateIDData gateIDData;
     [SerializeField] ScenarioDataBase scenarioDataBase;
-    TextAsset jsonFile; // —¬‚·JSONƒtƒ@ƒCƒ‹
+    TextAsset jsonFile; // æµã™JSONãƒ•ã‚¡ã‚¤ãƒ«
     private ScenarioData scenarioData;
     private int currentIndex = 0;
     public UIManager uiManager;
@@ -27,7 +27,7 @@ public class ScenarioPlayer: MonoBehaviour
         {
             //Debug.Log()
         }
-        // JSON‚ğƒfƒVƒŠƒAƒ‰ƒCƒY
+        // JSONã‚’ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚º
         scenarioData = JsonUtility.FromJson<ScenarioData>(jsonFile.text);
         Debug.Log($"Loaded Scenario: {scenarioData.id}");
 
@@ -39,8 +39,8 @@ public class ScenarioPlayer: MonoBehaviour
 
     void Update()
     {
-        // ƒNƒŠƒbƒN“ü—Í‚ğŒŸ’m
-        if (Input.GetMouseButtonDown(0)) // ¶ƒNƒŠƒbƒN
+        // ã‚¯ãƒªãƒƒã‚¯å…¥åŠ›ã‚’æ¤œçŸ¥
+        if (Input.GetMouseButtonDown(0)) // å·¦ã‚¯ãƒªãƒƒã‚¯
         {
             AdvanceScenario();
         }
@@ -89,7 +89,7 @@ public class ScenarioPlayer: MonoBehaviour
             if (block.Dialogue != null)
             {
                 Debug.Log($"Dialogue: {block.Dialogue.text} (Speed: {block.Dialogue.speed})");
-                uiManager.UpdateMainText(block.Dialogue.text,block.Dialogue.speed); // UIXV
+                uiManager.UpdateMainText(block.Dialogue.text,block.Dialogue.speed); // UIæ›´æ–°
             }
             //if (!string.IsNullOrEmpty(block.Portrait))
             //{

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class GateButtonID : MonoBehaviour
     public void SetID(string id)
     {
         ID = id;
-        Debug.Log($"ID‚ªİ’è‚³‚ê‚Ü‚µ‚½: {ID}");
+        Debug.Log($"IDãŒè¨­å®šã•ã‚Œã¾ã—ãŸ: {ID}");
         this.gameObject.GetComponentInChildren<TMP_Text>().text = id;
     }
 }
