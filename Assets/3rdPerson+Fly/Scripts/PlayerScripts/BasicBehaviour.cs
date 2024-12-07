@@ -53,7 +53,6 @@ public class BasicBehaviour : MonoBehaviour
     //　状態
     private State state;
     //　会話処理スクリプト
-    private MessageScript messageScript;
     void Awake ()
 	{
 		// Set up the references.
@@ -73,7 +72,6 @@ public class BasicBehaviour : MonoBehaviour
 	void Start ()
 	{
 		state = State.Normal;
-        messageScript = GetComponent<MessageScript>();
 	}
 	void Update()
 	{
@@ -101,17 +99,7 @@ public class BasicBehaviour : MonoBehaviour
 				camScript.ResetFOV();
 				changedFOV = false;
 			}
-            if (messageScript.GetConversationPartner() != null
-                && Input.GetButtonDown("Jump")
-                )
-            {
-                SetState(State.Talk);
-            }
         }
-		if(state == State.Talk)
-		{
-
-		}
 
         // Set the grounded test on the Animator Controller.
         anim.SetBool(groundedBool, IsGrounded());
@@ -353,22 +341,6 @@ public class BasicBehaviour : MonoBehaviour
 		Ray ray = new Ray(this.transform.position + Vector3.up * (2 * colExtents.x), Vector3.down);
 		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f);
 	}
-
-    //　状態変更と初期設定
-    public void SetState(State state)
-    {
-        this.state = state;
-
-        if (state == State.Talk)
-        {
-            messageScript.StartTalking();
-        }
-    }
-    public State GetState()
-    {
-        return state;
-    }
-
 }
 
 // This is the base class for all player behaviours, any custom behaviour must inherit from this.

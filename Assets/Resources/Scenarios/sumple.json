@@ -1,0 +1,81 @@
+{
+  "id": "sumple",
+  "Scenario": [
+    {
+      "Background": "main_image",
+      "BlackOut": 0.01
+    },
+    {
+      "CharacterName": "ユイガ",
+      "Dialogue": {
+        "text": "「・・・？」",
+        "speed": 0.1
+      },
+      "BlackIn": 3,
+      "BGM": "クレイジークッキング"
+    },
+    {
+      "Dialogue": {
+        "text": "自室のベッドに寝ていたはずなのに、それにしては感触が硬すぎる",
+        "speed": 0.1
+      }
+    },
+    {
+      "Dialogue": {
+        "text": "石の上に寝ている感じだ",
+        "speed": 0.1
+      }
+    },
+    {
+      "CharacterName": "ユイガ",
+      "Dialogue": {
+        "text": "「ここは・・・？」",
+        "speed": 0.1
+      }
+    },
+    {
+      "CharacterName": "ユイガ",
+      "Dialogue": {
+        "text": "「暗い・・・」",
+        "speed": 0.1
+      }
+    },
+    {
+      "CharacterName": "ユイガ",
+      "Dialogue": {
+        "text": "「なんだ・・・？」",
+        "speed": 0.05
+      },
+      "Portrait": "yuiga_normal"
+    },
+    {
+      "CharacterName": "ユイガ",
+      "Dialogue": {
+        "text": "「なんだこれ・・・!？」",
+        "speed": 0.025
+      },
+      "Portrait": "yuiga_normal",
+      "SE": "爆発1"
+    },
+    {
+      "Dialogue": {
+        "text": "体が着ぐるみのような姿に変わっていた",
+        "speed": 0.1
+      }
+    },
+    {
+      "Background": "samui2",
+      "Dialogue": {
+        "text": "Background切り替え",
+        "speed": 0
+      }
+    },
+    {
+      "ScreenShake": 30,
+      "Dialogue": {
+        "text": "ド　ン　ッ　！　！",
+        "speed": 0
+      }
+    }
+  ]
+}
