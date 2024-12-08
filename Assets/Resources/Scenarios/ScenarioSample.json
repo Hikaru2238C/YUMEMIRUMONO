@@ -2,13 +2,14 @@
    "QuestName": "『目覚め』",
    "Scenario": [
       {
+         "BGM": "クレイジークッキング",
          "Background": "main_image",
          "BlackOut": 0.001,
          "Dialogue": {
             "text": "・・・・・・・・",
             "speed": 0.05
          }
-       },
+      },
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
