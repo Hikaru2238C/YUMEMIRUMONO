@@ -37,7 +37,7 @@ public class GateButtonSpawner : MonoBehaviour
                 {
                     prefabToSpawn = ButtleButtonPrefab;
                 }
-                else if (id.StartsWith("シナリオ")|| id.StartsWith("Scenario"))
+                else// if (id.StartsWith("シナリオ")|| id.StartsWith("Scenario"))
                 {
                     prefabToSpawn = ScenarioeButtonPrefab;
                 }                

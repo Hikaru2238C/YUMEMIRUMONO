@@ -3,12 +3,16 @@
    "Scenario": [
       {
          "Background": "main_image",
-         "BlackOut": 0.001
+         "BlackOut": 0.001,
+         "Dialogue": {
+            "text": "・・・・・・・・",
+            "speed": 0.05
+         }
        },
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
-            "text": "「・・・?」",
+            "text": "・・・?",
             "speed": 0.05
          }
       },
@@ -27,21 +31,21 @@
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
-            "text": "「ここは・・・?」",
+            "text": "ここは・・・?",
             "speed": 0.05
          }
       },
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
-            "text": "「暗い・・・」",
+            "text": "暗い・・・",
             "speed": 0.05
          }
       },
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
-            "text": "「なんだ・・・?」",
+            "text": "なんだ・・・?",
             "speed": 0.05
          },
          "Portrait": "yuiga_normal"
@@ -49,7 +53,7 @@
       {
          "CharacterName": "ユイガ",
          "Dialogue": {
-            "text": "「なんだこれ・・・!?」",
+            "text": "なんだこれ・・・!?",
             "speed": 0.2
          },
          "Portrait": "yuiga_normal",
@@ -59,7 +63,7 @@
       {
          "Dialogue": {
             "text": "体が着ぐるみのような姿に変わっていた",
-            "time": 0.05
+            "speed": 0.05
          }
       }
    ]
