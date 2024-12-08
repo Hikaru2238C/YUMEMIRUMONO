@@ -2,8 +2,9 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI; // 必要ならUIを使用
+using UnityEngine.SceneManagement;
 
-public class ScenarioPlayer: MonoBehaviour
+public class ScenarioPlayer : MonoBehaviour
 {
     [SerializeField] GateIDData gateIDData;
     [SerializeField] ScenarioDataBase scenarioDataBase;
@@ -11,6 +12,8 @@ public class ScenarioPlayer: MonoBehaviour
     private ScenarioData scenarioData;
     private int currentIndex = 0;
     public UIManager uiManager;
+    private List<Log> logList = new List<Log>();
+    [SerializeField] GameObject LogUIs;
 
     void Start()
     {
@@ -18,12 +21,12 @@ public class ScenarioPlayer: MonoBehaviour
 
         foreach (var kvp in dict)
         {
-            if(kvp.Key == gateIDData.questID)
+            if (kvp.Key == gateIDData.questID)
             {
                 jsonFile = kvp.Value;
             }
         }
-        if(jsonFile == null)
+        if (jsonFile == null)
         {
             //Debug.Log()
         }
@@ -40,10 +43,10 @@ public class ScenarioPlayer: MonoBehaviour
     void Update()
     {
         // クリック入力を検知
-        if (Input.GetMouseButtonDown(0)) // 左クリック
-        {
-            AdvanceScenario();
-        }
+        // if (Input.GetMouseButtonDown(0)) // 左クリック
+        // {
+        //     AdvanceScenario();
+        // }
     }
 
     private void ShowCurrentScenarioBlock()
@@ -89,12 +92,13 @@ public class ScenarioPlayer: MonoBehaviour
             if (block.Dialogue != null)
             {
                 Debug.Log($"Dialogue: {block.Dialogue.text} (Speed: {block.Dialogue.speed})");
-                uiManager.UpdateMainText(block.Dialogue.text,block.Dialogue.speed); // UI更新
+                uiManager.UpdateMainText(block.Dialogue.text, block.Dialogue.speed); // UI更新
+                logList.Add(new Log(block.CharacterName, block.Dialogue.text));
             }
             //if (!string.IsNullOrEmpty(block.Portrait))
             //{
-                Debug.Log($"Portrait: {block.Portrait}");
-                uiManager.UpdatePortrait(block.Portrait);
+            Debug.Log($"Portrait: {block.Portrait}");
+            uiManager.UpdatePortrait(block.Portrait);
             //}
             if (!string.IsNullOrEmpty(block.SE))
             {
@@ -109,7 +113,7 @@ public class ScenarioPlayer: MonoBehaviour
         }
     }
 
-    private void AdvanceScenario()
+    public void AdvanceScenario()
     {
         currentIndex++;
         if (currentIndex < scenarioData.Scenario.Count)
@@ -120,6 +124,17 @@ public class ScenarioPlayer: MonoBehaviour
         {
             Debug.Log("End of Scenario");
             uiManager.ClearDialogue();
+            SceneManager.LoadScene("MainTown");
         }
+    }
+
+    public void SkipScenario()
+    {
+        SceneManager.LoadScene("MainTown");
+    }
+
+    public void showLog()
+    {
+        LogUIs.SendMessage("createLog", logList);
     }
 }

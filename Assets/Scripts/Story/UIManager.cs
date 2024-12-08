@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] BackgroundDataBase backgroundDataBase;
     [SerializeField] PortraitDataBase portraitDataBase;
     [SerializeField] SEDataBase seDataBase;
+    [SerializeField] GameObject SkipMenuUIs;
+    [SerializeField] GameObject LogUIs;
 
     float delaySpeed; // 次の文字を表示するまでの時間[s]
     private Coroutine showCoroutine;
@@ -40,7 +42,7 @@ public class UIManager : MonoBehaviour
     }
 
     //会話テキストの変更
-    public void UpdateMainText(string text,float speed)
+    public void UpdateMainText(string text, float speed)
     {
         if (!string.IsNullOrEmpty(text))
         {
@@ -196,5 +198,26 @@ public class UIManager : MonoBehaviour
                 backGroundPanel.sprite = kvp.Value;
             }
         }
+    }
+
+    //スキップメニューを表示する
+    public void ShowSkipMenu()
+    {
+        SkipMenuUIs.SetActive(true);
+    }
+
+    public void HideSkipMenu()
+    {
+        SkipMenuUIs.SetActive(false);
+    }
+
+    public void ShowLog()
+    {
+        LogUIs.SetActive(true);
+    }
+
+    public void HideLog()
+    {
+        LogUIs.SetActive(false);
     }
 }

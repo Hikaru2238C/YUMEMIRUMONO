@@ -26,7 +26,7 @@ public class GateButtonSpawner : MonoBehaviour
         foreach (var kvp in dict)
         {
             Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value}");
-            if ( kvp.Value)
+            if (kvp.Value)
             {
                 // idを設定
                 string id = $"{kvp.Key}";
@@ -40,7 +40,7 @@ public class GateButtonSpawner : MonoBehaviour
                 else// if (id.StartsWith("シナリオ")|| id.StartsWith("Scenario"))
                 {
                     prefabToSpawn = ScenarioeButtonPrefab;
-                }                
+                }
                 // Prefabを生成し、親オブジェクトを指定
                 GameObject childButton = Instantiate(prefabToSpawn, parentObject);
                 //名前を設定

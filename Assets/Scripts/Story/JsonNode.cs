@@ -49,7 +49,7 @@ public class JsonNode : IEnumerable<JsonNode>, IDisposable
         return new JsonNode(MiniJSON.Json.Deserialize(json));
     }
 
-    public JsonNode this [int i]
+    public JsonNode this[int i]
     {
         get
         {
@@ -61,7 +61,7 @@ public class JsonNode : IEnumerable<JsonNode>, IDisposable
         }
     }
 
-    public JsonNode this [string key]
+    public JsonNode this[string key]
     {
         get
         {
@@ -90,7 +90,7 @@ public class JsonNode : IEnumerable<JsonNode>, IDisposable
                 return 0;
             }
         }
-      
+
     }
 
     public T Get<T>()

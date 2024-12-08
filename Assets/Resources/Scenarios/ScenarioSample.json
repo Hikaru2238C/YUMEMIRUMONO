@@ -56,7 +56,6 @@
             "text": "なんだこれ・・・!?",
             "speed": 0.2
          },
-         "Portrait": "yuiga_normal",
          "SE": "爆発1",
          "BlackIn": 2
       },
@@ -65,6 +64,9 @@
             "text": "体が着ぐるみのような姿に変わっていた",
             "speed": 0.05
          }
+      },
+      {
+         "BlackOut": 3
       }
    ]
 }
