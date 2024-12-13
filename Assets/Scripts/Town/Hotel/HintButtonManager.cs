@@ -32,8 +32,12 @@ public class HintButtonManager : MonoBehaviour
             // JSONデータを配列形式でデシリアライズ
             hintDialogue =  JsonUtility.FromJson<HintDialogue>(hintTextAsset.text);
 
+            // `Contents`の中の`//n`を改行に変換
+            string formattedContents = hintDialogue.Contents.Replace("//n", "\n");
+
             titleText.text = hintDialogue.Title;
             mainText.text = hintDialogue.Contents;
+            mainText.text = formattedContents;
         }
         else
         {
