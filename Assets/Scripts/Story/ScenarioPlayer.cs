@@ -8,7 +8,7 @@ public class ScenarioPlayer : MonoBehaviour
 {
     [SerializeField] GateIDData gateIDData;
     [SerializeField] ScenarioDataBase scenarioDataBase;
-    TextAsset jsonFile; // 流すJSONファイル
+    TextAsset scenarioJsonFile; // 流すJSONファイル
     private ScenarioData scenarioData;
     private int currentIndex = 0;
     public UIManager uiManager;
@@ -23,15 +23,15 @@ public class ScenarioPlayer : MonoBehaviour
         {
             if (kvp.Key == gateIDData.questID)
             {
-                jsonFile = kvp.Value;
+                scenarioJsonFile = kvp.Value;
             }
         }
-        if (jsonFile == null)
+        if (scenarioJsonFile == null)
         {
             //Debug.Log()
         }
         // JSONをデシリアライズ
-        scenarioData = JsonUtility.FromJson<ScenarioData>(jsonFile.text);
+        scenarioData = JsonUtility.FromJson<ScenarioData>(scenarioJsonFile.text);
         Debug.Log($"Loaded Scenario: {scenarioData.id}");
 
         if (scenarioData.Scenario != null && scenarioData.Scenario.Count > 0)

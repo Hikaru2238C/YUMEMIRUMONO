@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class QuestSelectManager : MonoBehaviour
 {
-    [SerializeField] GateButtonID gateButtonID;
+    [SerializeField] GetButtonID getButtonID;
     [SerializeField] GateIDData gateIDData;
     public void LaunchQuest()
     {
-        Debug.Log(gateButtonID.ID);
-        gateIDData.questID = gateButtonID.ID;
-        if (gateButtonID.ID.StartsWith("バトル"))
+        Debug.Log(getButtonID.ID);
+        gateIDData.questID = getButtonID.ID;
+        if (getButtonID.ID.StartsWith("バトル"))
         {
             SceneManager.LoadScene("Battle");
         }

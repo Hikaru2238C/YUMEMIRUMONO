@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GateButtonID : MonoBehaviour
+public class GetButtonID : MonoBehaviour
 {
     public string ID { get; private set; }
 

@@ -47,7 +47,7 @@ public class GateButtonSpawner : MonoBehaviour
                 childButton.name = id;
 
                 // IDを格納するスクリプトがある場合に設定
-                GateButtonID childID = childButton.GetComponent<GateButtonID>();
+                GetButtonID childID = childButton.GetComponent<GetButtonID>();
                 if (childID != null)
                 {
                     childID.SetID(id);
