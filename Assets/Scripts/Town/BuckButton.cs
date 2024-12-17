@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BuckButton : MonoBehaviour
 {
-    [SerializeField] GameObject beforePanel;
+    [Header("押したときに表示させたいパネル")]
+    [SerializeField] GameObject subjectPanel;
     [SerializeField] GameObject blackPanel;
     FadePanelControl blackPanelControl;
-    const float blackPanelSpeed = 2;
+    const float blackPanelSpeed = 0.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         blackPanelControl = blackPanel.GetComponent<FadePanelControl>();
@@ -18,8 +18,11 @@ public class BuckButton : MonoBehaviour
 
     public void OnBuckClick()
     {
-        gameObject.transform.parent.gameObject.SetActive(false);
+        blackPanel.SetActive(true);
         blackPanelControl.FadeOut(blackPanelSpeed);
-        beforePanel.SetActive(true);
+        gameObject.transform.parent.gameObject.SetActive(false);
+        subjectPanel.SetActive(true);
+        blackPanelControl.FadeIn(blackPanelSpeed);
+        blackPanel.SetActive(false);
     }
 }
