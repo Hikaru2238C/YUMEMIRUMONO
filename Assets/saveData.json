@@ -1,0 +1,12 @@
+{
+  "deckCards": [
+    {
+      "cardName": "Attack Card 1",
+      "cardImage": null
+    },
+    {
+      "cardName": "Defense Card 1",
+      "cardImage": null
+    }
+  ]
+}

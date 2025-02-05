@@ -7,22 +7,27 @@ public class BuckButton : MonoBehaviour
     [Header("押したときに表示させたいパネル")]
     [SerializeField] GameObject subjectPanel;
     [SerializeField] GameObject blackPanel;
+    [SerializeField] CanvasManager canvasManager;
+    GameObject parentPanel;
     FadePanelControl blackPanelControl;
     const float blackPanelSpeed = 0.5f;
 
     void Start()
     {
         blackPanelControl = blackPanel.GetComponent<FadePanelControl>();
+        parentPanel = transform.parent.gameObject;
 
     }
 
     public void OnBuckClick()
     {
-        blackPanel.SetActive(true);
         blackPanelControl.FadeOut(blackPanelSpeed);
-        gameObject.transform.parent.gameObject.SetActive(false);
+        canvasManager.PanelChange(blackPanelSpeed,parentPanel,subjectPanel);
+    }
+
+    public void OnQuicBackClick()
+    {
+        transform.parent.gameObject.SetActive(false);
         subjectPanel.SetActive(true);
-        blackPanelControl.FadeIn(blackPanelSpeed);
-        blackPanel.SetActive(false);
     }
 }

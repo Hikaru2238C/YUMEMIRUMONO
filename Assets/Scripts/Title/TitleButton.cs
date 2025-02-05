@@ -6,18 +6,25 @@ using UnityEngine.SceneManagement;
 public class TitleButton : MonoBehaviour
 {
     [SerializeField] GameObject subjectPanel;
+    [SerializeField] CanvasManager canvasManager;
+    [SerializeField] FadePanelControl blackPanel;
+    const float blackPanelSpeed = 0.5f;
+
     public void OnStartButton()
     {
+        blackPanel.FadeOut(blackPanelSpeed);
         SceneManager.LoadScene("MainTown");
     }
 
     public void OnDeleteSaveDataButton()
     {
-        subjectPanel.SetActive(true);
+        blackPanel.FadeOut(blackPanelSpeed);
+        canvasManager.PanelChange(blackPanelSpeed, transform.parent.gameObject, subjectPanel);
     }
 
     public void OnPrecautionsButton()
     {
-        subjectPanel.SetActive(true);
+        blackPanel.FadeOut(blackPanelSpeed);
+        canvasManager.PanelChange(blackPanelSpeed, transform.parent.gameObject, subjectPanel);
     }
 }

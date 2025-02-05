@@ -14,7 +14,7 @@ public class FadePanelControl : MonoBehaviour
         if (isFadeIn)
         {
             alpha -= Time.deltaTime / fadeSpeed;
-            if (alpha <= 0.0f)//透明になったら、フェードインを終了
+            if (alpha <= 0.07f)//透明になったら、フェードインを終了
             {
                 isFadeIn = false;
                 alpha = 0.0f;
@@ -24,7 +24,7 @@ public class FadePanelControl : MonoBehaviour
         else if (isFadeOut)
         {
             alpha += Time.deltaTime / fadeSpeed;
-            if (alpha >= 1.0f)//真っ黒になったら、フェードアウトを終了
+            if (alpha >= 0.93f)//真っ黒になったら、フェードアウトを終了
             {
                 isFadeOut = false;
                 alpha = 1.0f;

@@ -6,23 +6,13 @@ public class ShopButton : MonoBehaviour
 {
     [SerializeField] GameObject buyPanel;
     [SerializeField] GameObject sellPanel;
-    void Start()
-    {
-        
-    }
 
-
-    void OnBuyClick()
+    public void OnBuyClick()
     {
         buyPanel.SetActive(true);
     }
-    void OnSellClick()
+    public void OnSellClick()
     {
-        sellPanel.SetActive(false);
-    }
-    void OnbackShopClick()
-    {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(false);
+        sellPanel.SetActive(true);
     }
 }
